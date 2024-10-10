@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstChallenge.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,21 +11,18 @@ namespace FirstChallenge.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var comics = ComicBookManager.GetComicBooks();
+            return View(comics);
         }
 
-        public ActionResult About()
+        public ActionResult Detail(int id)
         {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
+            var comics = ComicBookManager.GetComicBooks();
+            var comic = comics.FirstOrDefault(p => p.ComicBookId == id);
+            return View(comic);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+      
     }
 }
