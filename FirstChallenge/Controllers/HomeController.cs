@@ -11,17 +11,22 @@ namespace FirstChallenge.Controllers
     {
         public ActionResult Index()
         {
-            var comics = ComicBookManager.GetComicBooks();
-            return View(comics);
+           var comics =  ComicBookManager.GetComicBooks();
+
+            return View(comics );
         }
 
         public ActionResult Detail(int id)
         {
-
             var comics = ComicBookManager.GetComicBooks();
             var comic = comics.FirstOrDefault(p => p.ComicBookId == id);
+
+
             return View(comic);
         }
+       
+
+        
 
       
     }
